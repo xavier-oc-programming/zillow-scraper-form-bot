@@ -20,6 +20,7 @@ class FormBot:
             "profile.default_content_setting_values.geolocation": 1,
         })
         self.driver = uc.Chrome(options=options, version_main=config.CHROME_VERSION)
+        time.sleep(1)  # UC opens Chrome asynchronously; wait for window to be ready
         self.driver.maximize_window()
         self.wait = WebDriverWait(self.driver, config.WAIT_TIMEOUT)
 
