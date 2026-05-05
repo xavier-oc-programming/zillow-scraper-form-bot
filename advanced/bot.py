@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 import time
+from urllib.error import URLError
 
 import undetected_chromedriver as uc
 from selenium.webdriver.common.by import By
@@ -19,7 +20,13 @@ class FormBot:
             "profile.default_content_setting_values.notifications": 2,
             "profile.default_content_setting_values.geolocation": 1,
         })
-        self.driver = uc.Chrome(options=options, version_main=config.CHROME_VERSION)
+        try:
+            self.driver = uc.Chrome(options=options, version_main=config.CHROME_VERSION)
+        except URLError:
+            raise SystemExit(
+                "Could not download ChromeDriver — check your internet connection and try again.\n"
+                "Once downloaded it will be cached and this won't happen again."
+            )
         time.sleep(1)  # UC opens Chrome asynchronously; wait for window to be ready
         self.driver.maximize_window()
         self.wait = WebDriverWait(self.driver, config.WAIT_TIMEOUT)
