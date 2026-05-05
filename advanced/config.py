@@ -2,7 +2,7 @@
 # URLs
 # ============================================================
 ZILLOW_CLONE_URL = "https://appbrewery.github.io/Zillow-Clone/"
-GOOGLE_FORM_URL = "https://forms.gle/MHjwDFDMrhHGm2iW6"
+GOOGLE_FORM_URL = "https://docs.google.com/forms/d/e/1FAIpQLSfeaG5K1ujPpAqb82tWWqDHM9BYI0HU5iUhTXVStgG5faB-hg/viewform?usp=send_form"
 
 # ============================================================
 # Scraping — HTTP headers sent with requests
