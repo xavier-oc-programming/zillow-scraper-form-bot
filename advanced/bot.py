@@ -4,6 +4,7 @@ import time
 from urllib.error import URLError
 
 import undetected_chromedriver as uc
+from selenium.common.exceptions import NoSuchWindowException
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
@@ -37,7 +38,10 @@ class FormBot:
 
     def submit(self, address: str, price: str, link: str) -> None:
         """Open the Google Form and submit one listing entry."""
-        self.driver.get(config.GOOGLE_FORM_URL)
+        try:
+            self.driver.get(config.GOOGLE_FORM_URL)
+        except NoSuchWindowException:
+            raise SystemExit("Chrome window was closed. Don't close the browser while the bot is running.")
 
         self._fill_input(config.XPATH_ADDRESS_INPUT, address)
         self._fill_input(config.XPATH_PRICE_INPUT, price)
