@@ -1,12 +1,24 @@
 # zillow-scraper-form-bot
 
-Scrapes rental listings from a Zillow clone and auto-submits address, price, and link to a Google Form via Selenium.
+![Python 3.9+](https://img.shields.io/badge/Python-3.9+-blue?logo=python&logoColor=white)
+![Selenium](https://img.shields.io/badge/Selenium-4.x-43B02A?logo=selenium&logoColor=white)
+![BeautifulSoup](https://img.shields.io/badge/BeautifulSoup4-scraping-orange)
+![undetected-chromedriver](https://img.shields.io/badge/undetected--chromedriver-bot--bypass-lightgrey)
+
+Scrapes rental listings from a Zillow clone and auto-submits address, price, and link to a Google Form via Selenium. **Submits all 30 listings in ~35 seconds.**
 
 Given the Zillow Clone page at `https://appbrewery.github.io/Zillow-Clone/`, the bot fetches every property card and extracts three pieces of data per listing — for example: `"250 Water St APT 4H, New York, NY 10038"`, `"$2,150"`, and the property detail URL. It then opens Google Chrome, navigates to a pre-configured Google Form, fills in the three short-answer fields for each listing, and clicks Submit — repeating until every listing has been recorded.
 
 Two builds are included. The **original build** (`original/main.py`) is the course solution kept verbatim: one file, global constants, and functions. The **advanced build** (`advanced/`) refactors the same logic into separate classes (`ZillowScraper`, `FormBot`) with all constants centralised in `config.py` and undetected-chromedriver used in place of standard ChromeDriver to avoid bot-detection fingerprinting.
 
 No external API accounts or credentials are required. The project uses only public URLs: the Zillow Clone is a static site hosted by the course, and the Google Form is a publicly accessible form that accepts anonymous submissions.
+
+| | Original | Advanced |
+|---|---|---|
+| Scraping | requests + BeautifulSoup | requests + BeautifulSoup |
+| Browser automation | `selenium.webdriver.Chrome` | `undetected_chromedriver` |
+| Structure | Functions, one file | Classes, separate modules |
+| Bot detection bypass | No | Yes |
 
 ---
 
