@@ -42,19 +42,16 @@ class FormBot:
         """Open the Google Form and submit one listing entry."""
         try:
             self.driver.get(config.GOOGLE_FORM_URL)
-        except NoSuchWindowException:
+            self._fill_input(config.XPATH_ADDRESS_INPUT, address)
+            self._fill_input(config.XPATH_PRICE_INPUT, price)
+            self._fill_input(config.XPATH_LINK_INPUT, link)
+            submit_btn = self.wait.until(
+                EC.presence_of_element_located((By.XPATH, config.XPATH_SUBMIT_BUTTON))
+            )
+            self._js_click(submit_btn)
+            time.sleep(config.SUBMIT_DELAY)
+        except (NoSuchWindowException, AttributeError):
             raise SystemExit("Chrome window was closed. Don't close the browser while the bot is running.")
-
-        self._fill_input(config.XPATH_ADDRESS_INPUT, address)
-        self._fill_input(config.XPATH_PRICE_INPUT, price)
-        self._fill_input(config.XPATH_LINK_INPUT, link)
-
-        submit_btn = self.wait.until(
-            EC.presence_of_element_located((By.XPATH, config.XPATH_SUBMIT_BUTTON))
-        )
-        self._js_click(submit_btn)
-
-        time.sleep(config.SUBMIT_DELAY)
 
     def quit(self) -> None:
         self.driver.quit()
