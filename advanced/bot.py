@@ -1,11 +1,13 @@
 from __future__ import annotations
 
+import subprocess
 import time
 from urllib.error import URLError
 
 import undetected_chromedriver as uc
 from selenium.common.exceptions import NoSuchWindowException
 from selenium.webdriver.common.by import By
+from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 
@@ -66,7 +68,8 @@ class FormBot:
             EC.element_to_be_clickable((By.XPATH, xpath))
         )
         element.clear()
-        element.send_keys(value)
+        subprocess.run("pbcopy", input=value.encode(), check=True)
+        element.send_keys(Keys.COMMAND + "v")
 
     def _js_click(self, element) -> None:
         try:
