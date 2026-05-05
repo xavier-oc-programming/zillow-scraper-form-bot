@@ -28,8 +28,11 @@ class FormBot:
                 "Could not download ChromeDriver — check your internet connection and try again.\n"
                 "Once downloaded it will be cached and this won't happen again."
             )
-        time.sleep(1)  # UC opens Chrome asynchronously; wait for window to be ready
-        self.driver.maximize_window()
+        time.sleep(2)  # UC opens Chrome asynchronously; wait for window to be ready
+        try:
+            self.driver.maximize_window()
+        except NoSuchWindowException:
+            raise SystemExit("Chrome closed immediately after opening. Try running again.")
         self.wait = WebDriverWait(self.driver, config.WAIT_TIMEOUT)
 
     # ------------------------------------------------------------------
