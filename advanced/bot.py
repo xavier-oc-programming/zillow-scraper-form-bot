@@ -5,7 +5,7 @@ import time
 from urllib.error import URLError
 
 import undetected_chromedriver as uc
-from selenium.common.exceptions import NoSuchWindowException
+from selenium.common.exceptions import InvalidSessionIdException, NoSuchWindowException
 from selenium.webdriver.common.by import By
 from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.support.ui import WebDriverWait
@@ -50,7 +50,7 @@ class FormBot:
             )
             self._js_click(submit_btn)
             time.sleep(config.SUBMIT_DELAY)
-        except (NoSuchWindowException, AttributeError):
+        except (NoSuchWindowException, InvalidSessionIdException, AttributeError):
             raise SystemExit("Chrome window was closed. Don't close the browser while the bot is running.")
 
     def quit(self) -> None:

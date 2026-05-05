@@ -137,7 +137,7 @@ Zillow Clone page (HTML)
 | `requests.Timeout` | Zillow Clone page didn't respond within 15s | `"Timed out connecting to ... check your internet connection"` |
 | `requests.ConnectionError` | No network when fetching listings | `"Could not reach ... check your internet connection"` |
 | `urllib.URLError` | UC ChromeDriver download timed out on first run | `"Could not download ChromeDriver — check your internet connection"` |
-| `NoSuchWindowException` | Chrome window closed while bot is running | `"Chrome window was closed. Don't close the browser while the bot is running."` |
+| `NoSuchWindowException` / `InvalidSessionIdException` / `AttributeError` | Chrome window closed while bot is running | `"Chrome window was closed. Don't close the browser while the bot is running."` |
 
 ### Builds at a glance
 
