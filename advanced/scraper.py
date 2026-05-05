@@ -19,7 +19,12 @@ class ZillowScraper:
     # ------------------------------------------------------------------
 
     def _fetch_html(self) -> str:
-        response = requests.get(config.ZILLOW_CLONE_URL, headers=config.HEADERS)
+        try:
+            response = requests.get(config.ZILLOW_CLONE_URL, headers=config.HEADERS, timeout=15)
+        except requests.exceptions.Timeout:
+            raise SystemExit(f"Timed out connecting to {config.ZILLOW_CLONE_URL}\nCheck your internet connection or try again later.")
+        except requests.exceptions.ConnectionError:
+            raise SystemExit(f"Could not reach {config.ZILLOW_CLONE_URL}\nCheck your internet connection or try again later.")
         response.raise_for_status()
         return response.text
 
