@@ -13,13 +13,6 @@ Two builds are included. The **original build** (`original/main.py`) is the cour
 
 No external API accounts or credentials are required. The project uses only public URLs: the Zillow Clone is a static site hosted by the course, and the Google Form is a publicly accessible form that accepts anonymous submissions.
 
-| | Original | Advanced |
-|---|---|---|
-| Scraping | requests + BeautifulSoup | requests + BeautifulSoup |
-| Browser automation | `selenium.webdriver.Chrome` | `undetected_chromedriver` |
-| Structure | Functions, one file | Classes, separate modules |
-| Bot detection bypass | No | Yes |
-
 ---
 
 ## Table of Contents
@@ -136,6 +129,15 @@ Zillow Clone page (HTML)
 - `_js_click()` helper handles intercepted elements (overlapping divs, disabled states)
 - `bot.quit()` in a `finally` block ensures clean browser teardown on error
 - CSS selectors for scraping are named constants — swap them in one place if the DOM changes
+
+### Builds at a glance
+
+| | Original | Advanced |
+|---|---|---|
+| Scraping | requests + BeautifulSoup | requests + BeautifulSoup |
+| Browser automation | `selenium.webdriver.Chrome` | `undetected_chromedriver` |
+| Structure | Functions, one file | Classes, separate modules |
+| Bot detection bypass | No | Yes |
 
 ---
 
