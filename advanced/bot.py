@@ -20,6 +20,8 @@ class FormBot:
         options.add_experimental_option("prefs", {
             "profile.default_content_setting_values.notifications": 2,
             "profile.default_content_setting_values.geolocation": 1,
+            "credentials_enable_service": False,
+            "profile.password_manager_enabled": False,
         })
         try:
             self.driver = uc.Chrome(options=options, version_main=config.CHROME_VERSION)
@@ -28,7 +30,6 @@ class FormBot:
                 "Could not download ChromeDriver — check your internet connection and try again.\n"
                 "Once downloaded it will be cached and this won't happen again."
             )
-        time.sleep(2)  # UC opens Chrome asynchronously; wait for window to be ready
         self.wait = WebDriverWait(self.driver, config.WAIT_TIMEOUT)
 
     # ------------------------------------------------------------------
