@@ -24,10 +24,6 @@ SELECTOR_ADDRESSES = 'address[data-test="property-card-addr"]'
 # ============================================================
 # Selenium
 # ============================================================
-# Update CHROME_VERSION whenever Chrome auto-updates.
-# Check your version: /Applications/Google\ Chrome.app/Contents/MacOS/Google\ Chrome --version
-CHROME_VERSION = 147
-
 WAIT_TIMEOUT = 10  # seconds — for elements that MUST be present
 
 # ============================================================

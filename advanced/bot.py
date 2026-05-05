@@ -26,7 +26,7 @@ class FormBot:
             "profile.password_manager_enabled": False,
         })
         try:
-            self.driver = uc.Chrome(options=options, version_main=config.CHROME_VERSION)
+            self.driver = uc.Chrome(options=options)
         except URLError:
             raise SystemExit(
                 "Could not download ChromeDriver — check your internet connection and try again.\n"

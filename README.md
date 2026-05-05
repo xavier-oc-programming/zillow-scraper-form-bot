@@ -234,22 +234,17 @@ All in `advanced/config.py`.
 | Constant | Default | Description |
 |----------|---------|-------------|
 | `ZILLOW_CLONE_URL` | `https://appbrewery.github.io/Zillow-Clone/` | Static Zillow replica to scrape |
-| `GOOGLE_FORM_URL` | `https://forms.gle/MHjwDFDMrhHGm2iW6` | Target Google Form (short URL) |
+| `GOOGLE_FORM_URL` | `https://docs.google.com/forms/...` | Target Google Form (direct URL) |
 | `HEADERS` | Chrome/macOS User-Agent | HTTP headers for the scraping request |
 | `SELECTOR_LINKS` | `a[data-test="property-card-link"]` | CSS selector for property card links |
 | `SELECTOR_PRICES` | `span[data-test="property-card-price"]` | CSS selector for price elements |
 | `SELECTOR_ADDRESSES` | `address[data-test="property-card-addr"]` | CSS selector for address elements |
-| `CHROME_VERSION` | `146` | Must match installed Chrome major version |
 | `WAIT_TIMEOUT` | `10` | Selenium WebDriverWait timeout in seconds |
 | `SUBMIT_DELAY` | `1.0` | Pause (seconds) between form submissions |
 | `XPATH_ADDRESS_INPUT` | *(absolute XPath)* | Google Form address field |
 | `XPATH_PRICE_INPUT` | *(absolute XPath)* | Google Form price field |
 | `XPATH_LINK_INPUT` | *(absolute XPath)* | Google Form link field |
 | `XPATH_SUBMIT_BUTTON` | *(absolute XPath)* | Google Form submit button |
-
-**Updating `CHROME_VERSION`**: run
-`/Applications/Google\ Chrome.app/Contents/MacOS/Google\ Chrome --version`
-and set the major version number (e.g. `146`).
 
 ---
 
